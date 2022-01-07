@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <div class="img-box">
+            <img src="1.png"/>
+            <div class="fdj" style="display: none;">
+                <!--放大镜里面也放一张图片-->
+                <img src="1.png"/>
+            </div>
+        </div>
+        <div class="show-box" style="display: none;">
+            <img src="1.png"/>
+        </div>
+    </body>
+<style>
+.img-box{
+    position: relative;
+    float: left;
+    width: 400px;
+    height: 300px;
+    border: 10px solid #000;
+    margin-right: 50px;
+    margin: 50px;
+}
+.img-box img{
+    width: 100%;
+    height: 100%;
+}
+.fdj{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50px;
+    border: 1px solid rgba(0,0,0,.5);
+}
+.fdj img{
+    position: absolute;
+    top: 0;
+    left: 0;
+/*放大镜里面的图片是原图片的1.02倍，要设置的很小*/
+    width: 1008px;
+    height:306px;
+}
+.show-box{
+    float: left;
+    position: relative;
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 200px;
+}
+.show-box img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1600px;
+    height: 1200px;
+}
+</style>
+<script>
+window.onload = function(){
+
+    //获取元素
+    var imgBox = document.querySelector('.img-box');//图片盒子
+    var fdj = document.querySelector('.fdj');//放大镜
+    var img1 = fdj.querySelector('img');//放大镜里面的图片
+    var showBox = document.querySelector('.show-box');//显示大图的盒子
+    var img2 = showBox.querySelector('img');//显示放大的图片
+
+    imgBox.onmousemove = function(ev){
+        var ev = ev||event;
+
+        //显示放大镜
+        fdj.style.display = 'block';
+        showBox.style.display = 'block';
+
+        //设置放大镜的定位位置
+        var left = ev.clientX - imgBox.offsetLeft - imgBox.clientLeft - fdj.offsetWidth/2;
+        var top = ev.clientY - imgBox.offsetTop - imgBox.clientTop - fdj.offsetHeight/2;
+
+        //边界处理
+        if(left<0){
+            left = 0;
+        }else if(left>imgBox.clientWidth-fdj.offsetWidth){
+            left = imgBox.clientWidth-fdj.offsetWidth
+        }
+        if(top<0){
+            top = 0;
+        }else if(top>imgBox.clientHeight-fdj.offsetHeight){
+            top = imgBox.clientHeight-fdj.offsetHeight;
+        }
+
+        //放大镜位置的变化
+        fdj.style.left = left + 'px';
+        fdj.style.top = top + 'px';
+
+        //放大镜图片偏移量
+        var l = fdj.offsetWidth*(left/fdj.offsetWidth);
+        var t = fdj.offsetHeight*(top/fdj.offsetHeight);
+
+        //显示图片偏移量
+        var left_ = showBox.offsetWidth*(left/fdj.offsetWidth);
+        var top_ = showBox.offsetHeight*(top/fdj.offsetHeight);
+
+        //放大镜
+        img1.style.left = -l + 'px';
+        img1.style.top = -t+ 'px';
+
+        //显示
+        img2.style.left = -left_ + 'px';
+        img2.style.top = -top_ + 'px';
+
+    };
+
+    imgBox.onmouseout =function(){
+        fdj.style.display = 'none';
+        showBox.style.display = 'none';
+    };
+
+};  
+</script>
+</html>
