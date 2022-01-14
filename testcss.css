@@ -1,6 +1,13 @@
-div{
-    color:rgba(216, 10, 10, 0.89);
+#outcover{
+    visibility:hidden;
 }
-div:hover{
-    color:blue;
+.inner{
+    width: 100px;
+    height: 100px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 50px;
+    background-color: red;
+}
+.inner:hover{
+    visibility:visible;
 }
