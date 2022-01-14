@@ -1,6 +1,5 @@
 
 .inner{
-    visibility: hidden;
     margin: 1px;
     width: 100px;
     height: 100px;
@@ -11,5 +10,5 @@
     float:left;
 }
 .inner:hover{
-    visibility:visible;
+    transformer:scale(1.5);
 }
