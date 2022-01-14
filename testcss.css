@@ -1,7 +1,6 @@
-#outcover{
-    visibility:hidden;
-}
+
 .inner{
+    visibility: hidden;
     width: 100px;
     height: 100px;
     font-family: 'Courier New', Courier, monospace;
