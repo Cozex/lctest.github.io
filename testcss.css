@@ -9,6 +9,6 @@
     background-color: red;
     float:left;
 }
-.inner:hover{
+.inner:click{
     transformer:scale(1.5);
 }
