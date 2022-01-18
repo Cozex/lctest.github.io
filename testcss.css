@@ -5,10 +5,10 @@
     height: 100px;
     font-family: 'Courier New', Courier, monospace;
     font-size: 50px;
-    align-content: center;
+    text-align: center;
     background-color: red;
     float:left;
 }
-.inner:click{
+.inner:hover{
     transformer:scale(1.5);
 }
