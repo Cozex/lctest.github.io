@@ -10,5 +10,5 @@
     float:left;
 }
 .inner:hover{
-    transformer:scale(1.5);
+    transform:scale(1.5);
 }
