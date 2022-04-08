@@ -1,7 +1,32 @@
-<link rel="stylesheet" type="text/css" href="./testcss.css" />
-<div id="outcover">
-<div class="inner" id="inner1">新</div>
-<div class="inner" id="inner2">年</div>
-<div class="inner" id="inner3">快</div>
-<div class="inner" id="inner4">乐</div>
-</div>
+import { Menu, Dropdown } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
+
+const menu = (
+  <Menu>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+        1st menu item
+      </a>
+    </Menu.Item>
+    <Menu.Item icon={<DownOutlined />} disabled>
+      <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
+        2nd menu item (disabled)
+      </a>
+    </Menu.Item>
+    <Menu.Item disabled>
+      <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
+        3rd menu item (disabled)
+      </a>
+    </Menu.Item>
+    <Menu.Item danger>a danger item</Menu.Item>
+  </Menu>
+);
+
+ReactDOM.render(
+  <Dropdown overlay={menu}>
+    <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+      Hover me <DownOutlined />
+    </a>
+  </Dropdown>,
+  mountNode,
+);
